@@ -90,6 +90,13 @@ Params size (MB): 0.18
 Estimated Total Size (MB): 1.77
 ----------------------------------------------------------------
 ```
+### Missclassfied images
+<img width="642" alt="Screenshot 2023-06-24 at 2 57 39 AM" src="https://github.com/piygr/s8erav1/assets/135162847/efd7b92f-6440-4739-bd9f-522e67c8ad1f">
+<img width="661" alt="Screenshot 2023-06-24 at 2 57 47 AM" src="https://github.com/piygr/s8erav1/assets/135162847/0fdb44db-fce4-49e4-a3c2-331efcb6baf5">
+
+### Graphs
+
+
 
 We can monitor our model performance while it's getting trained. The output looks like this - 
 ```
@@ -208,6 +215,14 @@ Estimated Total Size (MB): 1.77
 ----------------------------------------------------------------
 ```
 
+### Missclassfied images
+<img width="648" alt="Screenshot 2023-06-24 at 3 12 35 AM" src="https://github.com/piygr/s8erav1/assets/135162847/7bd79383-517c-47ac-ad6b-9bd7a5060557">
+<img width="683" alt="Screenshot 2023-06-24 at 3 12 43 AM" src="https://github.com/piygr/s8erav1/assets/135162847/d38d3b78-0f3a-493a-8508-08d161f49602">
+
+### Graphs
+<img width="792" alt="Screenshot 2023-06-24 at 2 48 36 AM" src="https://github.com/piygr/s8erav1/assets/135162847/ddc2b25c-21be-49ed-8895-80c575776065">
+<img width="813" alt="Screenshot 2023-06-24 at 2 48 45 AM" src="https://github.com/piygr/s8erav1/assets/135162847/39be1919-a305-453a-98fd-beb6dff61184">
+
 We can monitor our model performance while it's getting trained. The output looks like this - 
 ```
 Adjusting learning rate of group 0 to 1.0000e-02.
@@ -312,11 +327,7 @@ Train: Loss=0.3287 Batch_id=781 Accuracy=74.46: 100%|█████████
 Test set: Average loss: 0.7667, Accuracy: 7272/10000 (72.72%)
 
 ```
-### Graphs
-<img width="792" alt="Screenshot 2023-06-24 at 2 48 36 AM" src="https://github.com/piygr/s8erav1/assets/135162847/ddc2b25c-21be-49ed-8895-80c575776065">
-<img width="813" alt="Screenshot 2023-06-24 at 2 48 45 AM" src="https://github.com/piygr/s8erav1/assets/135162847/39be1919-a305-453a-98fd-beb6dff61184">
 
-### Misclassified images
 
 ## Batch Normalization
 
@@ -374,6 +385,14 @@ Params size (MB): 0.18
 Estimated Total Size (MB): 1.77
 ----------------------------------------------------------------
 ```
+### Misclassified images
+<img width="656" alt="Screenshot 2023-06-24 at 3 13 12 AM" src="https://github.com/piygr/s8erav1/assets/135162847/1ad15520-5105-4c09-ba68-de4ba995e2f4">
+<img width="643" alt="Screenshot 2023-06-24 at 3 13 24 AM" src="https://github.com/piygr/s8erav1/assets/135162847/c8f74cfb-5826-4fdd-b4a9-131c32902fe1">
+
+### Graphs
+
+<img width="787" alt="Screenshot 2023-06-24 at 2 40 11 AM" src="https://github.com/piygr/s8erav1/assets/135162847/4b214212-804b-4023-9710-d585cb1531a7">
+<img width="817" alt="Screenshot 2023-06-24 at 2 40 19 AM" src="https://github.com/piygr/s8erav1/assets/135162847/9006588f-b7b9-4a24-a04e-9faaa2be7534">
 
 We can monitor our model performance while it's getting trained. The output looks like this - 
 ```
@@ -414,13 +433,6 @@ Train: Loss=0.7882 Batch_id=781 Accuracy=73.58: 100%|█████████
 Test set: Average loss: 0.7155, Accuracy: 7489/10000 (74.89%)
 
 ```
-
-### Graphs
-
-<img width="787" alt="Screenshot 2023-06-24 at 2 40 11 AM" src="https://github.com/piygr/s8erav1/assets/135162847/4b214212-804b-4023-9710-d585cb1531a7">
-<img width="817" alt="Screenshot 2023-06-24 at 2 40 19 AM" src="https://github.com/piygr/s8erav1/assets/135162847/9006588f-b7b9-4a24-a04e-9faaa2be7534">
-
-### Misclassified images
 
 
 
