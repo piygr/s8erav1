@@ -1,10 +1,14 @@
-# Session 7 Assignment
-Model to detect handwritten digits, trained on MNIST dataset of 60,000 images.
+# Session 8 Assignment
+Model built on CIFAR10
 
 **Goal is to create a model with**
-- 99.4% validation accuracy with consistency
-- Less than 8k Parameters
-- Less than 15 Epochs
+1. this network: C1 C2 c3 P1 C3 C4 C5 c6 P2 C7 C8 C9 GAP C10
+2. Keep the parameter count less than 50000
+3. Max Epochs is 20
+4. 3 versions of the above code (in each case achieve above 70% accuracy):
+ - Network with Group Normalization
+ - Network with Layer Normalization
+ - Network with Batch Normalization
 
 ## Model_1.py
 <table>
