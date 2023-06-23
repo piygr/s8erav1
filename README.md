@@ -95,6 +95,8 @@ Estimated Total Size (MB): 1.77
 <img width="661" alt="Screenshot 2023-06-24 at 2 57 47 AM" src="https://github.com/piygr/s8erav1/assets/135162847/0fdb44db-fce4-49e4-a3c2-331efcb6baf5">
 
 ### Graphs
+<img width="836" alt="Screenshot 2023-06-24 at 3 32 14 AM" src="https://github.com/piygr/s8erav1/assets/135162847/2435b8ab-6c62-4457-b3ee-d7d8e384b25b">
+<img width="838" alt="Screenshot 2023-06-24 at 3 32 22 AM" src="https://github.com/piygr/s8erav1/assets/135162847/33b8bdb4-d1e4-47ce-a3f4-a94ff487a4b5">
 
 
 
@@ -166,7 +168,6 @@ Test set: Average loss: 0.7633, Accuracy: 7300/10000 (73.00%)
 ### Observation
 1. Layer normalization is a special case of Group normalization. With G = 1, GroupNorm is nothing but Layer normalization.
 2. mean and sigma values are computed for the group means across all the channels. Therefore, number of untrainable parameters = 2. But trainable parameters (Scale & Shift parametrs) are stored w.r.t. every channel.
-3. 
 
 Below is the model summary -
 ```
@@ -332,7 +333,8 @@ Test set: Average loss: 0.7667, Accuracy: 7272/10000 (72.72%)
 ## Batch Normalization
 
 ### Observation
-
+1. In Batch normalization, mean & sigma values are computed for every batch hence BN is dependent on batch size. Lower the batch size, higher inconsistency in mean & sigma values leading to delay in error stagmation.
+        
 
 Below is the model summary -
 ```
