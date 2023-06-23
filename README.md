@@ -34,7 +34,11 @@ Model built on CIFAR10
         </tr>
 </table>
 
+## Group Normalization
 
+### Observation
+1. Number of groups has to be a factor of number of channels. So, if G is number of groups and C is number of input channels, then every group contains C / G number of channels.
+2. Though mean and sigma is calculated for every group. Therefore, number of untrainable parameters = 2 * G. But trainable parameters (Scale & Shift parametrs) are computed w.r.t. every channel.
 
 Below is the model () summary -
 ```
