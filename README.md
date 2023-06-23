@@ -312,7 +312,57 @@ Train: Loss=0.3287 Batch_id=781 Accuracy=74.46: 100%|█████████
 Test set: Average loss: 0.7667, Accuracy: 7272/10000 (72.72%)
 
 ```
+## Batch Normalization
 
+### Observation
+1. Layer normalization is a special case of Group normalization. With G = 1, GroupNorm is nothing but Layer normalization.
+2. mean and sigma values are computed for the group means across all the channels. Therefore, number of untrainable parameters = 2. But trainable parameters (Scale & Shift parametrs) are stored w.r.t. every channel.
+3. 
+
+Below is the model summary -
+```
+
+```
+
+We can monitor our model performance while it's getting trained. The output looks like this - 
+```
+Adjusting learning rate of group 0 to 1.0000e-02.
+
+Epoch 1
+Train: Loss=1.8736 Batch_id=781 Accuracy=39.70: 100%|██████████| 782/782 [01:50<00:00,  7.06it/s]
+Test set: Average loss: 1.3371, Accuracy: 5089/10000 (50.89%)
+
+Adjusting learning rate of group 0 to 1.0000e-02.
+Epoch 2
+Train: Loss=1.1200 Batch_id=781 Accuracy=57.08: 100%|██████████| 782/782 [01:48<00:00,  7.22it/s]
+Test set: Average loss: 1.0703, Accuracy: 6120/10000 (61.20%)
+
+Adjusting learning rate of group 0 to 1.0000e-02.
+Epoch 3
+Train: Loss=1.0113 Batch_id=781 Accuracy=62.66: 100%|██████████| 782/782 [01:47<00:00,  7.25it/s]
+Test set: Average loss: 0.9325, Accuracy: 6635/10000 (66.35%)
+
+Adjusting learning rate of group 0 to 1.0000e-02.
+Epoch 4
+Train: Loss=0.8194 Batch_id=781 Accuracy=66.53: 100%|██████████| 782/782 [01:47<00:00,  7.29it/s]
+Test set: Average loss: 0.9088, Accuracy: 6718/10000 (67.18%)
+
+Adjusting learning rate of group 0 to 1.0000e-02.
+Epoch 5
+Train: Loss=1.0183 Batch_id=781 Accuracy=69.77: 100%|██████████| 782/782 [01:47<00:00,  7.27it/s]
+Test set: Average loss: 0.8374, Accuracy: 7020/10000 (70.20%)
+
+Adjusting learning rate of group 0 to 1.0000e-02.
+Epoch 6
+Train: Loss=0.7885 Batch_id=781 Accuracy=72.07: 100%|██████████| 782/782 [01:48<00:00,  7.21it/s]
+Test set: Average loss: 0.7919, Accuracy: 7177/10000 (71.77%)
+
+Adjusting learning rate of group 0 to 1.0000e-02.
+Epoch 7
+Train: Loss=0.7882 Batch_id=781 Accuracy=73.58: 100%|██████████| 782/782 [01:50<00:00,  7.08it/s]
+Test set: Average loss: 0.7155, Accuracy: 7489/10000 (74.89%)
+
+```
 
 ## utils.py
 The file contains utility & helper functions needed for training & for evaluating our model.
