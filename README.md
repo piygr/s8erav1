@@ -10,7 +10,7 @@ Model built on CIFAR10
  - Network with Layer Normalization
  - Network with Batch Normalization
 
-## Model_3.py
+------
 <table>
         <tr>
                 <th></th>
@@ -24,13 +24,13 @@ Model built on CIFAR10
         </tr>
         <tr>
                 <td>Layer Normalization</td>
-                <td></td>
-                <td></td>
+                <td>74.46%</td>
+                <td>72.72%</td>
         </tr>
         <tr>
                 <td>Batch Normalization</td>
-                <td></td>
-                <td></td>
+                <td>73.58%</td>
+                <td>74.89%</td>
         </tr>
 </table>
 
