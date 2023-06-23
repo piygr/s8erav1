@@ -158,7 +158,7 @@ Test set: Average loss: 0.7633, Accuracy: 7300/10000 (73.00%)
 The file contains utility & helper functions needed for training & for evaluating our model.
 
 ## S8.ipynb
-The file is an IPython notebook. The notebook imports helper functions from utils.py and Model class from Model_1.py, Model_2.py & Model_3.py.
+The file is an IPython notebook. The notebook imports helper functions from utils.py.
 
 ## How to setup
 ### Prerequisits
