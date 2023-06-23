@@ -315,13 +315,58 @@ Test set: Average loss: 0.7667, Accuracy: 7272/10000 (72.72%)
 ## Batch Normalization
 
 ### Observation
-1. Layer normalization is a special case of Group normalization. With G = 1, GroupNorm is nothing but Layer normalization.
-2. mean and sigma values are computed for the group means across all the channels. Therefore, number of untrainable parameters = 2. But trainable parameters (Scale & Shift parametrs) are stored w.r.t. every channel.
-3. 
+
 
 Below is the model summary -
 ```
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1           [-1, 16, 32, 32]             448
+       BatchNorm2d-2           [-1, 16, 32, 32]              32
+         Dropout2d-3           [-1, 16, 32, 32]               0
+            Conv2d-4           [-1, 16, 32, 32]           2,320
+       BatchNorm2d-5           [-1, 16, 32, 32]              32
+         Dropout2d-6           [-1, 16, 32, 32]               0
+            Conv2d-7            [-1, 8, 32, 32]             136
+         MaxPool2d-8            [-1, 8, 16, 16]               0
+            Conv2d-9           [-1, 32, 16, 16]           2,336
+      BatchNorm2d-10           [-1, 32, 16, 16]              64
+        Dropout2d-11           [-1, 32, 16, 16]               0
+           Conv2d-12           [-1, 32, 16, 16]           9,248
+      BatchNorm2d-13           [-1, 32, 16, 16]              64
+        Dropout2d-14           [-1, 32, 16, 16]               0
+           Conv2d-15           [-1, 32, 16, 16]           9,248
+      BatchNorm2d-16           [-1, 32, 16, 16]              64
+        Dropout2d-17           [-1, 32, 16, 16]               0
+           Conv2d-18           [-1, 16, 16, 16]             528
+        MaxPool2d-19             [-1, 16, 8, 8]               0
+           Conv2d-20             [-1, 32, 8, 8]           4,640
+      BatchNorm2d-21             [-1, 32, 8, 8]              64
+        Dropout2d-22             [-1, 32, 8, 8]               0
+           Conv2d-23             [-1, 32, 8, 8]           9,248
+      BatchNorm2d-24             [-1, 32, 8, 8]              64
+        Dropout2d-25             [-1, 32, 8, 8]               0
+           Conv2d-26             [-1, 32, 8, 8]           9,248
+      BatchNorm2d-27             [-1, 32, 8, 8]              64
+        Dropout2d-28             [-1, 32, 8, 8]               0
+        AvgPool2d-29             [-1, 32, 1, 1]               0
+           Conv2d-30             [-1, 10, 1, 1]             330
+================================================================
 
+Total params: 48,178
+
+Trainable params: 48,178
+
+Non-trainable params: 0
+
+----------------------------------------------------------------
+
+Input size (MB): 0.01
+Forward/backward pass size (MB): 1.57
+Params size (MB): 0.18
+Estimated Total Size (MB): 1.77
+----------------------------------------------------------------
 ```
 
 We can monitor our model performance while it's getting trained. The output looks like this - 
