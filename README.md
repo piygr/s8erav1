@@ -14,13 +14,13 @@ Model built on CIFAR10
 <table>
         <tr>
                 <th></th>
-                <th>Training Accuravy</th>
+                <th>Training Accuracy</th>
                 <th>Test Accuracy</th>
         </tr>
         <tr>
-                <td>Group Normalization</td>
-                <td></td>
-                <td></td>
+                <td>Group Normalization (No of groups - 4) </td>
+                <td>73.39</td>
+                <td>72.29%</td>
         </tr>
         <tr>
                 <td>Layer Normalization</td>
@@ -28,7 +28,7 @@ Model built on CIFAR10
                 <td>72.72%</td>
         </tr>
         <tr>
-                <td>Batch Normalization</td>
+                <td>Batch Normalization (Batch size - 64) </td>
                 <td>73.58%</td>
                 <td>74.89%</td>
         </tr>
