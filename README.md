@@ -42,184 +42,122 @@ Model built on CIFAR10
 
 ### Observation
 1. Number of groups has to be a factor of number of channels. So, if G is number of groups and C is number of input channels, then every group contains C / G number of channels.
-2. Though mean and sigma is calculated for every group. Therefore, number of untrainable parameters = 2 * G. But trainable parameters (Scale & Shift parametrs) are computed w.r.t. every channel.
+2. mean and sigma values are computed for every group. Therefore, number of untrainable parameters = 2 * G. But trainable parameters (Scale & Shift parametrs) are stored w.r.t. every channel. Every channel belonging to a group *g* will share same trainable parameters but will have different trainable (Scale & Shift) parameters.
 
-Below is the model () summary -
+Below is the model summary -
 ```
 ----------------------------------------------------------------
-
         Layer (type)               Output Shape         Param #
-
 ================================================================
-
-            Conv2d-1            [-1, 8, 28, 28]              80
-
-              ReLU-2            [-1, 8, 28, 28]               0
-
-       BatchNorm2d-3            [-1, 8, 28, 28]              16
-
-         Dropout2d-4            [-1, 8, 28, 28]               0
-
-            Conv2d-5            [-1, 8, 28, 28]             584
-
-              ReLU-6            [-1, 8, 28, 28]               0
-
-       BatchNorm2d-7            [-1, 8, 28, 28]              16
-
-         Dropout2d-8            [-1, 8, 28, 28]               0
-
-         MaxPool2d-9            [-1, 8, 14, 14]               0
-
-           Conv2d-10           [-1, 12, 12, 12]             876
-
-             ReLU-11           [-1, 12, 12, 12]               0
-
-      BatchNorm2d-12           [-1, 12, 12, 12]              24
-
-        Dropout2d-13           [-1, 12, 12, 12]               0
-
-           Conv2d-14           [-1, 16, 10, 10]           1,744
-
-             ReLU-15           [-1, 16, 10, 10]               0
-
-      BatchNorm2d-16           [-1, 16, 10, 10]              32
-
-        Dropout2d-17           [-1, 16, 10, 10]               0
-
-        MaxPool2d-18             [-1, 16, 5, 5]               0
-
-           Conv2d-19             [-1, 20, 3, 3]           2,900
-
-             ReLU-20             [-1, 20, 3, 3]               0
-
-      BatchNorm2d-21             [-1, 20, 3, 3]              40
-
-        Dropout2d-22             [-1, 20, 3, 3]               0
-
-        AvgPool2d-23             [-1, 20, 1, 1]               0
-
-           Linear-24                   [-1, 10]             210
-
+            Conv2d-1           [-1, 16, 32, 32]             448
+         GroupNorm-2           [-1, 16, 32, 32]              32
+         Dropout2d-3           [-1, 16, 32, 32]               0
+            Conv2d-4           [-1, 16, 32, 32]           2,320
+         GroupNorm-5           [-1, 16, 32, 32]              32
+         Dropout2d-6           [-1, 16, 32, 32]               0
+            Conv2d-7            [-1, 8, 32, 32]             136
+         MaxPool2d-8            [-1, 8, 16, 16]               0
+            Conv2d-9           [-1, 32, 16, 16]           2,336
+        GroupNorm-10           [-1, 32, 16, 16]              64
+        Dropout2d-11           [-1, 32, 16, 16]               0
+           Conv2d-12           [-1, 32, 16, 16]           9,248
+        GroupNorm-13           [-1, 32, 16, 16]              64
+        Dropout2d-14           [-1, 32, 16, 16]               0
+           Conv2d-15           [-1, 32, 16, 16]           9,248
+        GroupNorm-16           [-1, 32, 16, 16]              64
+        Dropout2d-17           [-1, 32, 16, 16]               0
+           Conv2d-18           [-1, 16, 16, 16]             528
+        MaxPool2d-19             [-1, 16, 8, 8]               0
+           Conv2d-20             [-1, 32, 8, 8]           4,640
+        GroupNorm-21             [-1, 32, 8, 8]              64
+        Dropout2d-22             [-1, 32, 8, 8]               0
+           Conv2d-23             [-1, 32, 8, 8]           9,248
+        GroupNorm-24             [-1, 32, 8, 8]              64
+        Dropout2d-25             [-1, 32, 8, 8]               0
+           Conv2d-26             [-1, 32, 8, 8]           9,248
+        GroupNorm-27             [-1, 32, 8, 8]              64
+        Dropout2d-28             [-1, 32, 8, 8]               0
+        AvgPool2d-29             [-1, 32, 1, 1]               0
+           Conv2d-30             [-1, 10, 1, 1]             330
 ================================================================
-
-Total params: 6,522
-
-Trainable params: 6,522
-
+Total params: 48,178
+Trainable params: 48,178
 Non-trainable params: 0
-
 ----------------------------------------------------------------
-
-Input size (MB): 0.00
-
-Forward/backward pass size (MB): 0.51
-
-Params size (MB): 0.02
-
-Estimated Total Size (MB): 0.53
-
+Input size (MB): 0.01
+Forward/backward pass size (MB): 1.57
+Params size (MB): 0.18
+Estimated Total Size (MB): 1.77
 ----------------------------------------------------------------
 ```
 
 We can monitor our model performance while it's getting trained. The output looks like this - 
 ```
+Adjusting learning rate of group 0 to 1.0000e-02.
 Epoch 1
-Train: Loss=0.0172 Batch_id=937 Accuracy=93.55: 100%|██████████| 938/938 [00:36<00:00, 25.80it/s]
-Test set: Average loss: 0.0419, Accuracy: 9859/10000 (98.59%)
+Train: Loss=1.6918 Batch_id=781 Accuracy=31.06: 100%|██████████| 782/782 [01:49<00:00,  7.14it/s]
+Test set: Average loss: 1.5039, Accuracy: 4398/10000 (43.98%)
 
-
-
+Adjusting learning rate of group 0 to 1.0000e-02.
 Epoch 2
-Train: Loss=0.1250 Batch_id=937 Accuracy=97.14: 100%|██████████| 938/938 [00:35<00:00, 26.62it/s]
-Test set: Average loss: 0.0336, Accuracy: 9892/10000 (98.92%)
+Train: Loss=0.9059 Batch_id=781 Accuracy=47.94: 100%|██████████| 782/782 [01:45<00:00,  7.45it/s]
+Test set: Average loss: 1.2714, Accuracy: 5324/10000 (53.24%)
 
-
-
+Adjusting learning rate of group 0 to 1.0000e-02.
 Epoch 3
-Train: Loss=0.0043 Batch_id=937 Accuracy=97.57: 100%|██████████| 938/938 [00:36<00:00, 25.54it/s]
-Test set: Average loss: 0.0283, Accuracy: 9908/10000 (99.08%)
+Train: Loss=0.9463 Batch_id=781 Accuracy=55.08: 100%|██████████| 782/782 [01:46<00:00,  7.36it/s]
+Test set: Average loss: 1.1538, Accuracy: 5804/10000 (58.04%)
 
-
-
+Adjusting learning rate of group 0 to 1.0000e-02.
 Epoch 4
-Train: Loss=0.1071 Batch_id=937 Accuracy=97.79: 100%|██████████| 938/938 [00:35<00:00, 26.53it/s]
-Test set: Average loss: 0.0285, Accuracy: 9913/10000 (99.13%)
+Train: Loss=0.7531 Batch_id=781 Accuracy=59.48: 100%|██████████| 782/782 [01:50<00:00,  7.10it/s]
+Test set: Average loss: 1.0502, Accuracy: 6167/10000 (61.67%)
 
-
-
+Adjusting learning rate of group 0 to 1.0000e-02.
 Epoch 5
-Train: Loss=0.0172 Batch_id=937 Accuracy=98.05: 100%|██████████| 938/938 [00:35<00:00, 26.26it/s]
-Test set: Average loss: 0.0255, Accuracy: 9924/10000 (99.24%)
+Train: Loss=0.9614 Batch_id=781 Accuracy=62.61: 100%|██████████| 782/782 [01:55<00:00,  6.80it/s]
+Test set: Average loss: 1.0070, Accuracy: 6415/10000 (64.15%)
 
-
-
+Adjusting learning rate of group 0 to 1.0000e-02.
 Epoch 6
-Train: Loss=0.0459 Batch_id=937 Accuracy=98.06: 100%|██████████| 938/938 [00:36<00:00, 25.72it/s]
-Test set: Average loss: 0.0241, Accuracy: 9923/10000 (99.23%)
+Train: Loss=0.5281 Batch_id=781 Accuracy=65.24: 100%|██████████| 782/782 [01:45<00:00,  7.40it/s]
+Test set: Average loss: 0.9796, Accuracy: 6537/10000 (65.37%)
 
-
-
+Adjusting learning rate of group 0 to 1.0000e-02.
 Epoch 7
-Train: Loss=0.0316 Batch_id=937 Accuracy=98.19: 100%|██████████| 938/938 [00:35<00:00, 26.40it/s]
-Test set: Average loss: 0.0249, Accuracy: 9928/10000 (99.28%)
+Train: Loss=1.1028 Batch_id=781 Accuracy=67.28: 100%|██████████| 782/782 [01:50<00:00,  7.05it/s]
+Test set: Average loss: 0.8961, Accuracy: 6845/10000 (68.45%)
 
-
-
+Adjusting learning rate of group 0 to 1.0000e-03.
 Epoch 8
-Train: Loss=0.0595 Batch_id=937 Accuracy=98.22: 100%|██████████| 938/938 [00:38<00:00, 24.65it/s]
-Test set: Average loss: 0.0244, Accuracy: 9925/10000 (99.25%)
+Train: Loss=0.5350 Batch_id=781 Accuracy=71.80: 100%|██████████| 782/782 [01:52<00:00,  6.96it/s]
+Test set: Average loss: 0.7926, Accuracy: 7151/10000 (71.51%)
 
-
-
-Epoch 00008: reducing learning rate of group 0 to 1.0000e-02.
-
+Adjusting learning rate of group 0 to 1.0000e-03.
 Epoch 9
-Train: Loss=0.0114 Batch_id=937 Accuracy=98.50: 100%|██████████| 938/938 [00:36<00:00, 25.45it/s]
-Test set: Average loss: 0.0209, Accuracy: 9938/10000 (99.38%)
+Train: Loss=0.5492 Batch_id=781 Accuracy=72.47: 100%|██████████| 782/782 [01:50<00:00,  7.08it/s]
+Test set: Average loss: 0.7879, Accuracy: 7163/10000 (71.63%)
 
-
-
+Adjusting learning rate of group 0 to 1.0000e-03.
 Epoch 10
-Train: Loss=0.0031 Batch_id=937 Accuracy=98.59: 100%|██████████| 938/938 [00:39<00:00, 23.92it/s]
-Test set: Average loss: 0.0205, Accuracy: 9936/10000 (99.36%)
+Train: Loss=0.7824 Batch_id=781 Accuracy=72.86: 100%|██████████| 782/782 [01:50<00:00,  7.09it/s]
+Test set: Average loss: 0.7889, Accuracy: 7186/10000 (71.86%)
 
-
-
+Adjusting learning rate of group 0 to 1.0000e-03.
 Epoch 11
-Train: Loss=0.0290 Batch_id=937 Accuracy=98.64: 100%|██████████| 938/938 [00:36<00:00, 25.81it/s]
-Test set: Average loss: 0.0201, Accuracy: 9936/10000 (99.36%)
+Train: Loss=0.9571 Batch_id=781 Accuracy=73.39: 100%|██████████| 782/782 [01:53<00:00,  6.87it/s]
+Test set: Average loss: 0.7754, Accuracy: 7229/10000 (72.29%)
 
-
-
+Adjusting learning rate of group 0 to 1.0000e-03.
 Epoch 12
-Train: Loss=0.0089 Batch_id=937 Accuracy=98.60: 100%|██████████| 938/938 [00:42<00:00, 21.86it/s]
-Test set: Average loss: 0.0204, Accuracy: 9941/10000 (99.41%)
-
-
-
-Epoch 00012: reducing learning rate of group 0 to 1.0000e-03.
-
-Epoch 13
-Train: Loss=0.0217 Batch_id=937 Accuracy=98.67: 100%|██████████| 938/938 [00:42<00:00, 21.82it/s]
-Test set: Average loss: 0.0199, Accuracy: 9940/10000 (99.40%)
-
-
-
-Epoch 14
-Train: Loss=0.0976 Batch_id=937 Accuracy=98.73: 100%|██████████| 938/938 [00:42<00:00, 22.11it/s]
-Test set: Average loss: 0.0199, Accuracy: 9937/10000 (99.37%)
-
-
-
-Epoch 15
-Train: Loss=0.1151 Batch_id=937 Accuracy=98.72: 100%|██████████| 938/938 [00:44<00:00, 20.97it/s]
-Test set: Average loss: 0.0197, Accuracy: 9936/10000 (99.36%)
+Train: Loss=0.8656 Batch_id=781 Accuracy=73.54: 100%|██████████| 782/782 [01:53<00:00,  6.86it/s]
+Test set: Average loss: 0.7633, Accuracy: 7300/10000 (73.00%)
 
 ```
 ## utils.py
 The file contains utility & helper functions needed for training & for evaluating our model.
 
-## S7.ipynb
+## S8.ipynb
 The file is an IPython notebook. The notebook imports helper functions from utils.py and Model class from Model_1.py, Model_2.py & Model_3.py.
 
 ## How to setup
