@@ -312,6 +312,12 @@ Train: Loss=0.3287 Batch_id=781 Accuracy=74.46: 100%|█████████
 Test set: Average loss: 0.7667, Accuracy: 7272/10000 (72.72%)
 
 ```
+### Graphs
+<img width="792" alt="Screenshot 2023-06-24 at 2 48 36 AM" src="https://github.com/piygr/s8erav1/assets/135162847/ddc2b25c-21be-49ed-8895-80c575776065">
+<img width="813" alt="Screenshot 2023-06-24 at 2 48 45 AM" src="https://github.com/piygr/s8erav1/assets/135162847/39be1919-a305-453a-98fd-beb6dff61184">
+
+### Misclassified images
+
 ## Batch Normalization
 
 ### Observation
@@ -408,6 +414,15 @@ Train: Loss=0.7882 Batch_id=781 Accuracy=73.58: 100%|█████████
 Test set: Average loss: 0.7155, Accuracy: 7489/10000 (74.89%)
 
 ```
+
+### Graphs
+
+<img width="787" alt="Screenshot 2023-06-24 at 2 40 11 AM" src="https://github.com/piygr/s8erav1/assets/135162847/4b214212-804b-4023-9710-d585cb1531a7">
+<img width="817" alt="Screenshot 2023-06-24 at 2 40 19 AM" src="https://github.com/piygr/s8erav1/assets/135162847/9006588f-b7b9-4a24-a04e-9faaa2be7534">
+
+### Misclassified images
+
+
 
 ## utils.py
 The file contains utility & helper functions needed for training & for evaluating our model.
