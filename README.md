@@ -10,194 +10,27 @@ Model built on CIFAR10
  - Network with Layer Normalization
  - Network with Batch Normalization
 
-## Model_1.py
-<table>
-        <tr>
-                <th>Target</th>
-                <th>Result</th>
-                <th>Analysis</th>
-        </tr>
-        <tr>
-                <td>
-                        <ol>
-                        <li>Building data loaders, test & train data sets and train & test loop</li>
-                        <li>Also, setting basic skeleton with working model (without shape, size errors in model) </li>
-                        <li>Working model should be able to reach 98-99% accuracy on the dataset with the skeleton model</li>
-                        </ol>
-                </td>
-                <td>
-                        <ol>
-                        <li>390K+ parameters </li>
-                        <li>Best training accuracy - 99.94% </li>
-                        <li>Best test accuracy - 99.41% </li>
-                        </ol>
-                </td>
-                <td>
-                        <ol>
-                        <li>Too many parameters, need lighter model </li>
-                        <li>Overfitting </li>
-                        </ol>
-                </td>
-        </tr>
-        <tr>
-                <td>
-                        Building a lighter model with params under 30k
-                </td>
-                <td>
-                        <ol>
-                                <li>~26K parameters</li>
-                                <li>Best training accuracy - 99.84</li>
-                                <li>Best test accuracy - 99.23%</li>
-                        </ol>
-                </td>
-                <td>
-                        <ol>
-                                <li>Skeleton working, need to further reduce the params</li>
-                                <li>Overfitting</li>
-                        </ol>
-                </td>
-        </tr>
-</table>
-
-## Model_2.py
-<table>
-        <tr>
-                <th>Target</th>
-                <th>Result</th>
-                <th>Analysis</th>
-        </tr>
-        <tr>
-                <td>
-                        Building a lighter model with params under 8k
-                </td>
-                <td>
-                        <ol>
-                        <li>6.7k parameters</li>
-                        <li>Best training accuracy - 99.45 (20th epoch)</li>
-                        <li>Best test accuracy - 98.97% (13th epoch)</li>
-                        </ol>
-                </td>
-                <td>
-                        <ol>
-                        <li>Good model and can be pushed further</li>
-                        <li>Overfitting </li>
-                        </ol>
-                </td>
-        </tr>
-        <tr>
-                <td>
-                        Add normalisation, BatchNorm to push model efficiency
-                </td>
-                <td>
-                        <ol>
-                                <li>~6.9k params</li>
-                                <li>Best training accuracy - 99.74%</li>
-                                <li>Best test accuracy - 99.21%</li>
-                        </ol>
-                </td>
-                <td>
-                        <ol>
-                                <li>Still there's overfitting</li>
-                                <li>Model efficiency can't be pushed further</li>
-                        </ol>
-                </td>
-        </tr>
-         <tr>
-                <td>
-                        Add regularization (Dropout) to get rid of overfitting
-                </td>
-                <td>
-                        <ol>
-                                <li>Best training accuracy - 98.90 (19th epoch)/li>
-                                <li>Best test accuracy - 99.30% (18th epoch)</li>
-                        </ol>
-                </td>
-                <td>
-                        <ol>
-                                <li>Underfitting but that's because of regularisation, Good</li>
-                                <li>Model can't be pushed further with current capacity</li>
-                        </ol>
-                </td>
-        </tr>
-</table>
-
 ## Model_3.py
 <table>
         <tr>
-                <th>Target</th>
-                <th>Result</th>
-                <th>Analysis</th>
+                <th></th>
+                <th>Training Accuravy</th>
+                <th>Test Accuracy</th>
         </tr>
         <tr>
-                <td>
-                        Add GAP & remove last layer
-                </td>
-                <td>
-                        <ol>
-                        <li>4.5k parameters</li>
-                        <li>Best training accuracy - 98.74 (20th epoch)</li>
-                        <li>Best test accuracy - 99.28% (18th Epoch)</li>
-                        </ol>
-                </td>
-                <td>
-                        <ol>
-                        <li>Need to add capacity to reach 99.4 goal</li>
-                        <li>No overfitting </li>
-                        </ol>
-                </td>
+                <td>Group Normalization</td>
+                <td></td>
+                <td></td>
         </tr>
         <tr>
-                <td>
-                        Add FC post GAP layer and see
-                </td>
-                <td>
-                        <ol>
-                                <li>Model parameters - 6.5k</li>
-                                <li>Best training accuracy - 99.11% (20th epoch)</li>
-                                <li>Best test accuracy - 99.36% (20th epoch)</li>
-                        </ol>
-                </td>
-                <td>
-                        <ol>
-                                <li>Underfitting but it's fine. </li>
-                                <li>Need to playaround with image transforms to make training difficult</li>
-                        </ol>
-                </td>
-        </tr>
-         <tr>
-                <td>
-                        <ol>
-                                <li>Add transformations to input dataset</li>
-                                <li>Need to add rotation between (-10) to (10) degree</li>
-                        </ol>
-                </td>
-                <td>
-                        <ol>
-                                <li>Best training accuracy - 98.36 (17th epoch)/li>
-                                <li>Best test accuracy - 99.34% (12th epoch)</li>
-                        </ol>
-                </td>
-                <td>
-                        <ol>
-                                <li>Training is difficult enough</li>
-                                <li>Need to reduce epochs using right LR strategy</li>
-                        </ol>
-                </td>
+                <td>Layer Normalization</td>
+                <td></td>
+                <td></td>
         </tr>
         <tr>
-                <td>
-                        Achieve 99.4% accuracy within 15 epochs. Trying out ReduceLROnPlateau (Learning rate 0.1, patience=2, threshold = 0.001)
-                        </ol>
-                </td>
-                <td>
-                        <ol>
-                                <li>Best training accurancy - 98.73 (14th epoch)/li>
-                                <li>Best test accuracy - 99.41 (12th epoch)</li>
-                        </ol>
-                </td>
-                <td>
-                        Learning rate & batch size directly affects number of epochs
-                </td>
+                <td>Batch Normalization</td>
+                <td></td>
+                <td></td>
         </tr>
 </table>
 
