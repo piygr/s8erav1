@@ -19,8 +19,8 @@ Model built on CIFAR10
         </tr>
         <tr>
                 <td>Group Normalization (No of groups - 4) </td>
-                <td>73.39</td>
-                <td>72.29%</td>
+                <td>73.54%</td>
+                <td>73.00%</td>
         </tr>
         <tr>
                 <td>Layer Normalization</td>
@@ -34,7 +34,9 @@ Model built on CIFAR10
         </tr>
 </table>
 
-Below is the final model (Model_3) summary -
+
+
+Below is the model () summary -
 ```
 ----------------------------------------------------------------
 
