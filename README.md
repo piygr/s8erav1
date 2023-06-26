@@ -42,7 +42,7 @@ Model built on CIFAR10
 
 ### Observation
 1. Number of groups has to be a factor of number of channels. So, if G is number of groups and C is number of input channels, then every group contains C / G number of channels.
-2. mean and sigma values are computed for every group. Therefore, number of untrainable parameters = 2 * G. But trainable parameters (Scale & Shift parametrs) are stored w.r.t. every channel. Every channel belonging to a group *g* will share same trainable parameters but will have different trainable (Scale & Shift) parameters.
+2. mean and sigma values are computed for every group. Therefore, number of untrainable parameters = 2 * G * N (batch size). But trainable parameters (Scale & Shift parametrs) are stored w.r.t. every channel. Every channel belonging to a group *g* will share same untrainable parameters (mean & sigma) but will have different trainable (Scale & Shift) parameters.
 
 Below is the model summary -
 ```
@@ -167,7 +167,7 @@ Test set: Average loss: 0.7633, Accuracy: 7300/10000 (73.00%)
 
 ### Observation
 1. Layer normalization is a special case of Group normalization. With G = 1, GroupNorm is nothing but Layer normalization.
-2. mean and sigma values are computed for the group means across all the channels. Therefore, number of untrainable parameters = 2. But trainable parameters (Scale & Shift parametrs) are stored w.r.t. every channel.
+2. mean and sigma values are computed for the group means across all the channels. Therefore, number of untrainable parameters (mean & sigma) = 2 * N (N - Batch size). But trainable parameters (Scale & Shift parametrs) are stored w.r.t. every channel.
 
 Below is the model summary -
 ```
